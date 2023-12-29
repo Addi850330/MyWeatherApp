@@ -1,0 +1,256 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+.container .weatherinfo {
+  overflow: hidden;
+  position: relative;
+  width: 350px;
+  height: 100px;
+  background-color: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(30px);
+          backdrop-filter: blur(30px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  padding: 20px;
+  color: #fff;
+  transition: 0.2s ease-in;
+}
+.container .weatherinfo .reaserch {
+  position: relative;
+  width: 100%;
+  height: 55px;
+  display: flex;
+  align-items: center;
+}
+.container .weatherinfo .reaserch .locationicon {
+  position: absolute;
+  left: 10px;
+  font-size: 28px;
+}
+.container .weatherinfo .reaserch input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.364);
+  outline: none;
+  border-radius: 10px;
+  font-size: 22px;
+  color: #fff;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 0 48px 0 42px;
+}
+.container .weatherinfo .reaserch input::-moz-placeholder {
+  color: #fff;
+  text-transform: capitalize;
+}
+.container .weatherinfo .reaserch input::placeholder {
+  color: #fff;
+  text-transform: capitalize;
+}
+.container .weatherinfo .reaserch button {
+  position: absolute;
+  right: 0;
+  width: 40px;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 28px;
+  color: #fff;
+  padding: 0 40px 0 5px;
+  cursor: pointer;
+}
+.container .weatherinfo .weather {
+  pointer-events: none;
+  opacity: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: 0.5s;
+}
+.container .weatherinfo .weather .weatherimg {
+  margin-bottom: -20px;
+  width: 200px;
+  height: 200px;
+}
+.container .weatherinfo .weather .weatherimg img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.container .weatherinfo .weather .description {
+  font-size: 25px;
+  font-weight: 500;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+.container .weatherinfo .weather .temperture {
+  position: relative;
+  font-size: 2.5rem;
+  line-height: 1;
+  font-weight: 700;
+  margin: 5px 0 10px -50px;
+}
+.container .weatherinfo .weather .temperture span {
+  position: absolute;
+  font-size: 2.5rem;
+  margin-left: 4px;
+}
+.container .weatherinfo .weather .contryname {
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+.container .weatherinfo .weather .weatherdetail {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+}
+.container .weatherinfo .weather .weatherdetail .humidity, .container .weatherinfo .weather .weatherdetail .wind {
+  display: flex;
+  align-items: center;
+  width: 50%;
+}
+.container .weatherinfo .weather .weatherdetail .humidity {
+  margin-left: 1.5rem;
+  justify-content: flex-start;
+}
+.container .weatherinfo .weather .weatherdetail .wind {
+  margin-right: 1.5rem;
+  justify-content: flex-end;
+}
+.container .weatherinfo .weather .weatherdetail svg {
+  font-size: 2rem;
+  margin-right: 10px;
+}
+.container .weatherinfo .weather .weatherdetail .humiditynumber, .container .weatherinfo .weather .weatherdetail .windnumber {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 500;
+}
+.container .weatherinfo .weather .weatherdetail .humiditytitle, .container .weatherinfo .weather .weatherdetail .windtitle {
+  font-size: 14px;
+  font-weight: 500;
+}
+.container .weatherinfo .weathershow {
+  opacity: 0;
+  transition: 0.5s;
+}
+.container .weatherinfoopen {
+  height: 500px;
+}
+.container .weatherPredict {
+  opacity: 0;
+  width: 0px;
+  height: 450px;
+  background-color: rgba(159, 152, 152, 0.1);
+  -webkit-backdrop-filter: blur(30px);
+          backdrop-filter: blur(30px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 0 15px 15px 0;
+  text-align: center;
+  transition: 0.5s ease-in;
+}
+.container .weatherPredict .infocenter {
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 0 15px 15px 0;
+  align-content: space-around;
+  text-align: center;
+}
+.container .weatherPredict .infocenter .predictdate {
+  opacity: 0;
+  margin: 0 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: 1s;
+  transition-delay: 1s;
+}
+.container .weatherPredict .infocenter .predictdate .pdwImg {
+  width: 100px;
+  height: 100px;
+}
+.container .weatherPredict .infocenter .predictdate .pdwImg img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.container .weatherPredict .infocenter .predictdate .pdwDesc {
+  font-size: 20px;
+  width: 140px;
+  height: 40px;
+  line-height: 20px;
+  color: #fff;
+}
+.container .weatherPredict .infocenter .predictdate .pdwTemp {
+  font-size: 1.5rem;
+  color: #fff;
+}
+.container .weatherPredict .infocenter .predictdate .pdwDate {
+  font-size: 1.2rem;
+  color: #fff;
+}
+.container .weatherPredict .infocenter .predictdateShow {
+  opacity: 1;
+}
+.container .weatherPredictShow {
+  width: 480px;
+  opacity: 1;
+  transition: 0.5s;
+}
+
+@media (max-width: 929px) {
+  .container {
+    flex-direction: column;
+  }
+  .container .weatherPredict {
+    margin-top: 20px;
+    min-height: 450px;
+    border-radius: 15px;
+  }
+  .container .weatherPredict .infocenter .predictdate {
+    margin: 0 7px;
+  }
+}
+@media (max-width: 525px) {
+  .container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .container .weatherPredict {
+    width: 380px;
+    height: 620px;
+    display: flex;
+    justify-content: center;
+  }
+  .container .weatherPredict .infocenter {
+    width: 350px;
+  }
+  .container .weatherPredict .infocenter .predictdate {
+    margin: 0 15px;
+  }
+}
+@media (max-width: 413px) {
+  .container .weatherPredict {
+    width: 350px;
+    display: flex;
+    justify-content: center;
+  }
+  .container .weatherPredict .infocenter {
+    width: 310px;
+  }
+  .container .weatherPredict .infocenter .predictdate {
+    margin: 0 5px;
+  }
+}/*# sourceMappingURL=page.module.css.map */
