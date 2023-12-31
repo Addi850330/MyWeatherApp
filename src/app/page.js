@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { citydata } from "./CityNameList.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLocationDot,
@@ -48,6 +49,7 @@ export default function Home() {
           setHumidity("#");
           setWind("#");
           setLoading("open");
+          setPredictinfo("close");
           return;
         } else {
           let weatherNow = json.weather[0].main;
@@ -89,12 +91,14 @@ export default function Home() {
           setHumidity(humidityNow);
           setWind(windNow);
           setLoading("open");
+          setPredictinfo("open");
         }
       })
       .catch(() => {
         console.log("error location");
       });
   };
+
   // ------5 days weather location set------------
   let [lats, setLat] = useState("");
   let [lons, setLon] = useState("");
@@ -132,7 +136,7 @@ export default function Home() {
       .then((res) => res.json())
       .then((data) => {
         let weatherArray = [];
-        console.log(data.list);
+        // console.log(data.list);
         let firstD = {
           weather: data.list[5].weather[0].main.toLowerCase(),
           description: data.list[5].weather[0].description,
@@ -168,8 +172,8 @@ export default function Home() {
 
         setWeatherPredict(weatherArray);
       })
-      .catch((e) => {
-        console.log(e);
+      .catch(() => {
+        console.log("");
       });
   };
   useEffect(() => {
@@ -216,6 +220,9 @@ export default function Home() {
     locationenter();
     getlon();
   };
+  // -------------citylist set-----------
+  const cityList = citydata[0].citys;
+
   return (
     <div className={styles.container}>
       <div
@@ -232,14 +239,28 @@ export default function Home() {
               className="fa-solid fa-location-dot"
             />
           </div>
-
           <input
             type="text"
+            list="city-name-choice"
+            id="city-name"
             value={location}
             placeholder="Enter your location..."
             onChange={changeText}
             onKeyDown={keyDownHandler}
           />
+          <datalist className={styles.datalist} id="city-name-choice">
+            <select multiple name="" id="">
+              {cityList.map((data) => (
+                <option
+                  className={styles.option}
+                  key={data.id}
+                  value={data.cityName}
+                >
+                  {data.cityName}
+                </option>
+              ))}
+            </select>
+          </datalist>
           <button onClick={dataSubmit}>
             <FontAwesomeIcon
               icon={faMagnifyingGlass}

@@ -1,6 +1,7 @@
 .container {
   display: flex;
   align-items: center;
+  position: relative;
 }
 .container .weatherinfo {
   overflow: hidden;
@@ -41,6 +42,9 @@
   font-weight: 500;
   text-transform: uppercase;
   padding: 0 48px 0 42px;
+}
+.container .weatherinfo .reaserch input::-webkit-calendar-picker-indicator {
+  display: none !important;
 }
 .container .weatherinfo .reaserch input::-moz-placeholder {
   color: #fff;
@@ -159,6 +163,7 @@
   border-radius: 0 15px 15px 0;
   text-align: center;
   transition: 0.5s ease-in;
+  overflow: hidden;
 }
 .container .weatherPredict .infocenter {
   display: flex;
@@ -207,7 +212,14 @@
 .container .weatherPredictShow {
   width: 480px;
   opacity: 1;
-  transition: 0.5s;
+  transition: 0.2s;
+}
+.container .cityinput {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 350px;
+  height: 100px;
 }
 
 @media (max-width: 929px) {

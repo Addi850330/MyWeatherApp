@@ -1,6 +1,9 @@
 .container{
   display: flex;
   align-items: center;
+  position: relative;
+
+
     .weatherinfo{
         overflow: hidden;
         position: relative;
@@ -40,6 +43,13 @@
                 text-transform: uppercase;
                 padding: 0 48px 0 42px;
             }
+        // ----------
+  
+        input::-webkit-calendar-picker-indicator {
+            display: none !important;
+          }
+ 
+    //   -------------------------
             input::placeholder{
                 color: #fff;
                 text-transform: capitalize;
@@ -141,10 +151,13 @@
             opacity: 0;
            transition: .5s; 
         }
+      
     }
+ 
     .weatherinfoopen{
         height: 500px;
     }
+ 
     .weatherPredict{
         opacity: 0;
         width: 0px;
@@ -157,13 +170,14 @@
         border-radius: 0 15px 15px 0;
         text-align: center;
         transition: .5s ease-in;
-        // overflow: hidden;
+        overflow: hidden;
         .infocenter{
             display: flex;
             flex-wrap: wrap;
             border-radius: 0 15px 15px 0;
             align-content: space-around;
             text-align: center;
+     
             .predictdate{
                 opacity: 0;
                 margin: 0 5px;
@@ -209,7 +223,14 @@
     .weatherPredictShow{
         width: 480px;
         opacity: 1;
-        transition: .5s;
+        transition: .2s;
+    }
+    .cityinput{
+        display: flex;
+        flex-direction: column;
+        background-color: rgba(255, 255, 255, 0.1);
+        width: 350px;
+        height: 100px;
     }
 }
 
