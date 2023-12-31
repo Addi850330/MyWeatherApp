@@ -335,7 +335,13 @@ export default function Home() {
               }
             >
               <div className={styles.pdwImg}>
-                <img src={`/img/weather/${info.weather}.png`} alt="" />
+                <Image
+                  width={300}
+                  height={300}
+                  priority={true}
+                  alt="weather"
+                  src={`/img/weather/${info.weather}.png`}
+                />
               </div>
               <div className={styles.pdwDesc}>{info.description}</div>
               <div className={styles.pdwTemp}>{info.temperature}°C</div>
