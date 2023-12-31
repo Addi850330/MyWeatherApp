@@ -144,25 +144,25 @@ export default function Home() {
           date: data.list[5].dt_txt.substring(0, 10),
         };
         let secondD = {
-          weather: data.list[13].weather[0].main,
+          weather: data.list[13].weather[0].main.toLowerCase(),
           description: data.list[13].weather[0].description,
           temperature: parseInt(data.list[13].main.temp - 273.15),
           date: data.list[13].dt_txt.substring(0, 10),
         };
         let thirdD = {
-          weather: data.list[21].weather[0].main,
+          weather: data.list[21].weather[0].main.toLowerCase(),
           description: data.list[21].weather[0].description,
           temperature: parseInt(data.list[21].main.temp - 273.15),
           date: data.list[21].dt_txt.substring(0, 10),
         };
         let forthD = {
-          weather: data.list[29].weather[0].main,
+          weather: data.list[29].weather[0].main.toLowerCase(),
           description: data.list[29].weather[0].description,
           temperature: parseInt(data.list[29].main.temp - 273.15),
           date: data.list[29].dt_txt.substring(0, 10),
         };
         let fifthD = {
-          weather: data.list[37].weather[0].main,
+          weather: data.list[37].weather[0].main.toLowerCase(),
           description: data.list[37].weather[0].description,
           temperature: parseInt(data.list[37].main.temp - 273.15),
           date: data.list[37].dt_txt.substring(0, 10),
@@ -180,7 +180,7 @@ export default function Home() {
     if (weatherPredict === null) {
       return;
     } else {
-      // console.log(weatherPredict);
+      console.log(weatherPredict);
     }
   }, [weatherPredict]);
 
