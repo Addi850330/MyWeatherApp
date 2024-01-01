@@ -12,7 +12,7 @@ import {
 import styles from "./page.module.css";
 
 export default function Home() {
-  let [weather, setWeather] = useState("Clear");
+  let [weather, setWeather] = useState("no");
   let [temperature, setTemperature] = useState("0");
   let [city, setCity] = useState("Location");
   let [description, setDescription] = useState("Clear");
@@ -180,7 +180,7 @@ export default function Home() {
     if (weatherPredict === null) {
       return;
     } else {
-      console.log(weatherPredict);
+      // console.log(weatherPredict);
     }
   }, [weatherPredict]);
 
@@ -224,132 +224,134 @@ export default function Home() {
   const cityList = citydata[0].citys;
 
   return (
-    <div className={styles.container}>
-      <div
-        className={
-          weatherinfo === "close"
-            ? `${styles.weatherinfo}`
-            : `${styles.weatherinfo} ${styles.weatherinfoopen}`
-        }
-      >
-        <div className={styles.reaserch}>
-          <div className={styles.locationicon}>
-            <FontAwesomeIcon
-              icon={faLocationDot}
-              className="fa-solid fa-location-dot"
-            />
-          </div>
-          <input
-            type="text"
-            list="city-name-choice"
-            id="city-name"
-            value={location}
-            placeholder="Enter your location..."
-            onChange={changeText}
-            onKeyDown={keyDownHandler}
-          />
-          <datalist className={styles.datalist} id="city-name-choice">
-            <select multiple name="" id="">
-              {cityList.map((data) => (
-                <option
-                  className={styles.option}
-                  key={data.id}
-                  value={data.cityName}
-                >
-                  {data.cityName}
-                </option>
-              ))}
-            </select>
-          </datalist>
-          <button onClick={dataSubmit}>
-            <FontAwesomeIcon
-              icon={faMagnifyingGlass}
-              className="fa-solid fa-magnifying-glass"
-            />
-          </button>
-        </div>
+    <>
+      <div className={styles.container}>
         <div
           className={
-            loading === "close"
-              ? `${styles.weather} ${styles.weathershow}`
-              : `${styles.weather} `
+            weatherinfo === "close"
+              ? `${styles.weatherinfo}`
+              : `${styles.weatherinfo} ${styles.weatherinfoopen}`
           }
         >
-          <div className={styles.weatherimg}>
-            <Image
-              width={300}
-              height={300}
-              src={`/img/weather/${weather}.png`}
-              priority={true}
-              alt="weather"
-            />
-          </div>
-          <div className={styles.description}>{description}</div>
-          <div className={styles.temperture}>
-            {temperature}
-            <span>°C</span>
-          </div>
-
-          <div className={styles.contryname}>{city}</div>
-          <div className={styles.weatherdetail}>
-            <div className={styles.humidity}>
+          <div className={styles.reaserch}>
+            <div className={styles.locationicon}>
               <FontAwesomeIcon
-                icon={faDroplet}
-                className="fa-solid fa-droplet"
+                icon={faLocationDot}
+                className="fa-solid fa-location-dot"
               />
-              <div className={styles.infohumidity}>
-                <div className={styles.humiditytext}>
-                  <p className={styles.humiditynumber}>{humidity}%</p>
-                  <p className={styles.humiditytitle}>Humidity</p>
+            </div>
+            <input
+              type="text"
+              list="city-name-choice"
+              id="city-name"
+              value={location}
+              placeholder="Enter your location..."
+              onChange={changeText}
+              onKeyDown={keyDownHandler}
+            />
+            <datalist className={styles.datalist} id="city-name-choice">
+              <select multiple name="" id="">
+                {cityList.map((data) => (
+                  <option
+                    className={styles.option}
+                    key={data.id}
+                    value={data.cityName}
+                  >
+                    {data.cityName}
+                  </option>
+                ))}
+              </select>
+            </datalist>
+            <button onClick={dataSubmit}>
+              <FontAwesomeIcon
+                icon={faMagnifyingGlass}
+                className="fa-solid fa-magnifying-glass"
+              />
+            </button>
+          </div>
+          <div
+            className={
+              loading === "close"
+                ? `${styles.weather} ${styles.weathershow}`
+                : `${styles.weather} `
+            }
+          >
+            <div className={styles.weatherimg}>
+              <Image
+                width={300}
+                height={300}
+                src={`/img/weather/${weather}.png`}
+                priority={true}
+                alt="weather"
+              />
+            </div>
+            <div className={styles.description}>{description}</div>
+            <div className={styles.temperture}>
+              {temperature}
+              <span>°C</span>
+            </div>
+
+            <div className={styles.contryname}>{city}</div>
+            <div className={styles.weatherdetail}>
+              <div className={styles.humidity}>
+                <FontAwesomeIcon
+                  icon={faDroplet}
+                  className="fa-solid fa-droplet"
+                />
+                <div className={styles.infohumidity}>
+                  <div className={styles.humiditytext}>
+                    <p className={styles.humiditynumber}>{humidity}%</p>
+                    <p className={styles.humiditytitle}>Humidity</p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className={styles.wind}>
-              <FontAwesomeIcon icon={faWind} className="fa-solid fa-wind" />
-              <div className={styles.infowind}>
-                <div className={styles.windtext}>
-                  <p className={styles.windnumber}>{wind}Km/h</p>
-                  <p className={styles.windtitle}>Wind Speed</p>
+              <div className={styles.wind}>
+                <FontAwesomeIcon icon={faWind} className="fa-solid fa-wind" />
+                <div className={styles.infowind}>
+                  <div className={styles.windtext}>
+                    <p className={styles.windnumber}>{wind}Km/h</p>
+                    <p className={styles.windtitle}>Wind Speed</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div
-        className={
-          predictinfo === "close"
-            ? `${styles.weatherPredict}`
-            : `${styles.weatherPredict} ${styles.weatherPredictShow}`
-        }
-      >
-        <div className={styles.infocenter}>
-          {weatherPredict.map((info) => (
-            <div
-              key={info.date}
-              className={
-                predictinfo === "close"
-                  ? `${styles.predictdate}`
-                  : `${styles.predictdate} ${styles.predictdateShow}`
-              }
-            >
-              <div className={styles.pdwImg}>
-                <Image
-                  width={300}
-                  height={300}
-                  priority={true}
-                  alt="weather"
-                  src={`/img/weather/${info.weather}.png`}
-                />
+        <div
+          className={
+            predictinfo === "close"
+              ? `${styles.weatherPredict}`
+              : `${styles.weatherPredict} ${styles.weatherPredictShow}`
+          }
+        >
+          <div className={styles.infocenter}>
+            {weatherPredict.map((info) => (
+              <div
+                key={info.date}
+                className={
+                  predictinfo === "close"
+                    ? `${styles.predictdate}`
+                    : `${styles.predictdate} ${styles.predictdateShow}`
+                }
+              >
+                <div className={styles.pdwImg}>
+                  <Image
+                    width={300}
+                    height={300}
+                    priority={true}
+                    alt="weather"
+                    src={`/img/weather/${info.weather}.png`}
+                  />
+                </div>
+                <div className={styles.pdwDesc}>{info.description}</div>
+                <div className={styles.pdwTemp}>{info.temperature}°C</div>
+                <div className={styles.pdwDate}>{info.date}</div>
               </div>
-              <div className={styles.pdwDesc}>{info.description}</div>
-              <div className={styles.pdwTemp}>{info.temperature}°C</div>
-              <div className={styles.pdwDate}>{info.date}</div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
